@@ -17,7 +17,7 @@ import math
 class NBAPointsPredictor:
     
 
-    def round_to_betting_half(value):
+    def round_to_betting_half(self,value):
         """
         Rounds to the nearest .5 betting line.
         Whole numbers are not allowed.
