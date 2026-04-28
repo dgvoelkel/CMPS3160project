@@ -12,9 +12,29 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import cross_validate
-
+import math
 
 class NBAPointsPredictor:
+    
+
+    def round_to_betting_half(value):
+        """
+        Rounds to the nearest .5 betting line.
+        Whole numbers are not allowed.
+
+        Examples:
+            23.38 -> 23.5
+            23.89 -> 23.5
+            24.10 -> 24.5
+            24.70 -> 24.5
+        """
+        lower_half = math.floor(value) + 0.5
+        upper_half = math.ceil(value) + 0.5
+
+        if abs(value - lower_half) <= abs(value - upper_half):
+            return float(lower_half)
+        else:
+            return float(upper_half)
     def __init__(
         self,
         stats_df=None,
