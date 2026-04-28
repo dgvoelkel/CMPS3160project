@@ -917,7 +917,7 @@ class NBAPointsPredictor:
         raw_prediction = float(model.predict(feature_row[feature_cols])[0])
 
         if round_to_half:
-            rounded_prediction = round(raw_prediction * 2) / 2
+            rounded_prediction = self.round_to_betting_half(raw_prediction)
         else:
             rounded_prediction = raw_prediction
 
