@@ -245,7 +245,7 @@ class NBAPointsPredictor:
 
         df["Avg_PPG_Matchup"] = (
             df.sort_values(["PLAYER_ID", "GAME_DATE"])
-            .groupby(["PLAYER_ID", "MATCHUP"])["PTS"]
+            .groupby(["PLAYER_ID", "OPPONENT"])["PTS"]
             .transform(lambda x: x.shift(1).rolling(3, min_periods=1).mean())
         )
 
